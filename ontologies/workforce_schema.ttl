@@ -1,0 +1,107 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mesh: <https://agentskills.io/mesh#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://agentskills.io/mesh> a owl:Ontology ;
+    rdfs:label "SuperSkills Agentic Mesh Workforce Ontology"@en ;
+    dcterms:description "Formal semantic specification for enterprise-grade autonomous agents, departmental structures, competencies, and progressive disclosure skills."@en ;
+    owl:versionInfo "1.0.0" .
+
+#################################################################
+#    Classes
+#################################################################
+
+mesh:Department a owl:Class ;
+    rdfs:label "Department"@en ;
+    rdfs:comment "A major organizational division (e.g., Executive, Finance, Technology, Security, Demand Generation)."@en .
+
+mesh:Role a owl:Class ;
+    rdfs:label "Professional Role"@en ;
+    rdfs:comment "A specific job function or agent persona within a department (e.g., CFO, SecOps Architect, Copywriter)."@en .
+
+mesh:Competency a owl:Class ;
+    rdfs:label "Competency"@en ;
+    rdfs:comment "A domain-level capability or knowledge domain required by a role."@en .
+
+mesh:Skill a owl:Class ;
+    rdfs:label "Agent Skill"@en ;
+    rdfs:comment "An executable atomic capability packaged in agentskills.io format (SKILL.md) with progressive disclosure."@en .
+
+mesh:McpTool a owl:Class ;
+    rdfs:label "MCP Tool"@en ;
+    rdfs:comment "A tool exposed via Model Context Protocol or native agent capability."@en .
+
+mesh:TrustPolicy a owl:Class ;
+    rdfs:label "Trust & Governance Policy"@en ;
+    rdfs:comment "Security guardrail defining autonomy tiers, write boundaries, and human-in-the-loop requirements."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+mesh:hasRole a owl:ObjectProperty ;
+    rdfs:domain mesh:Department ;
+    rdfs:range mesh:Role ;
+    rdfs:label "has role"@en .
+
+mesh:requiresCompetency a owl:ObjectProperty ;
+    rdfs:domain mesh:Role ;
+    rdfs:range mesh:Competency ;
+    rdfs:label "requires competency"@en .
+
+mesh:executedBySkill a owl:ObjectProperty ;
+    rdfs:domain mesh:Competency ;
+    rdfs:range mesh:Skill ;
+    rdfs:label "executed by skill"@en .
+
+mesh:belongsToDepartment a owl:ObjectProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range mesh:Department ;
+    rdfs:label "belongs to department"@en .
+
+mesh:requiresTool a owl:ObjectProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range mesh:McpTool ;
+    rdfs:label "requires tool"@en .
+
+mesh:governedBy a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf (mesh:Department mesh:Role mesh:Skill) ] ;
+    rdfs:range mesh:TrustPolicy ;
+    rdfs:label "governed by"@en .
+
+mesh:delegatesTo a owl:ObjectProperty ;
+    rdfs:domain mesh:Role ;
+    rdfs:range mesh:Role ;
+    rdfs:label "delegates to subordinate role"@en .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+mesh:skillIdentifier a owl:DatatypeProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range xsd:string ;
+    rdfs:label "skill identifier"@en .
+
+mesh:skillDescription a owl:DatatypeProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range xsd:string ;
+    rdfs:label "skill activation description"@en .
+
+mesh:skillSourcePath a owl:DatatypeProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range xsd:string ;
+    rdfs:label "file path to SKILL.md"@en .
+
+mesh:autonomyTier a owl:DatatypeProperty ;
+    rdfs:domain mesh:TrustPolicy ;
+    rdfs:range xsd:integer ;
+    rdfs:label "autonomy tier (1: Read-Only, 2: Audited Write, 3: Human-in-the-Loop Approval)"@en .
+
+mesh:blastRadiusScore a owl:DatatypeProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range xsd:float ;
+    rdfs:label "blast radius risk score (0.0 to 1.0)"@en .

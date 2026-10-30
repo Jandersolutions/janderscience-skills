@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>JanderScience Skills: O Livro Definitivo da Força de Trabalho Agentic Mesh</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Ubuntu+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 22mm 20mm 22mm 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: 'Ubuntu Sans', sans-serif;
+        font-size: 8.5pt;
+        color: #64748b;
+      }
+      @bottom-left {
+        content: "JanderScience Skills &mdash; O Manual Definitivo de Engenharia de Agentes";
+        font-family: 'Ubuntu Sans', sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+      }
+      @top-right {
+        content: "Janderson B. Abreu";
+        font-family: 'Ubuntu Sans', sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+      }
+    }
+
+    @page:first {
+      margin: 0;
+      @bottom-right { content: normal; }
+      @bottom-left { content: normal; }
+      @top-right { content: normal; }
+    }
+
+    :root {
+      --color-plum: #772953;
+      --color-plum-dark: #4a1533;
+      --color-mint: #5eead4;
+      --color-teal: #2dd4bf;
+      --color-sky: #38bdf8;
+      --color-navy: #090d16;
+      --color-slate: #1e293b;
+      --color-muted: #64748b;
+      --color-bg-light: #f8fafc;
+      --color-border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Ubuntu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10pt;
+      line-height: 1.6;
+      color: var(--color-slate);
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* Page Breaks */
+    .page-break { page-break-before: always; }
+    .avoid-break { break-inside: avoid; }
+
+    /* Cover Page */
+    .cover-page {
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #090d16 0%, #1a0b1f 45%, #772953 100%);
+      color: #ffffff;
+      padding: 60mm 25mm 30mm 25mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-before: avoid;
+      page-break-after: always;
+    }
+
+    .cover-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 25mm;
+    }
+
+    .cover-logo-text {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--color-mint);
+    }
+
+    .cover-title {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 34pt;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #ffffff;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-subtitle {
+      font-family: 'Ubuntu Sans', sans-serif;
+      font-size: 15pt;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--color-sky);
+      margin: 0 0 25mm 0;
+      max-width: 580px;
+    }
+
+    .cover-badge-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30mm;
+      flex-wrap: wrap;
+    }
+
+    .cover-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(94, 234, 212, 0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 9pt;
+      font-family: 'Ubuntu Mono', monospace;
+      color: var(--color-mint);
+    }
+
+    .cover-author {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13pt;
+      font-weight: 500;
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cover-meta {
+      font-size: 9pt;
+      color: var(--color-muted);
+      font-family: 'Ubuntu Sans', sans-serif;
+    }
+
+    /* Front Matter */
+    .catalog-page {
+      padding: 30mm 15mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 90vh;
+      font-size: 8.5pt;
+      color: var(--color-muted);
+    }
+
+    .catalog-box {
+      border: 1px solid var(--color-slate);
+      padding: 16px 20px;
+      margin-top: 40mm;
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 8pt;
+      line-height: 1.5;
+      color: var(--color-slate);
+    }
+
+    /* Typography */
+    h1.part-title {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 26pt;
+      font-weight: 700;
+      color: var(--color-plum);
+      border-bottom: 3px solid var(--color-plum);
+      padding-bottom: 12px;
+      margin-top: 40mm;
+      margin-bottom: 25px;
+      letter-spacing: -0.5px;
+    }
+
+    h2.chapter-title {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 19pt;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-top: 10mm;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--color-border);
+    }
+
+    h3.section-title {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--color-plum);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    h4.subsection-title {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--color-slate);
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin: 0 0 11px 0;
+      text-indent: 16px;
+    }
+
+    p.no-indent {
+      text-indent: 0;
+    }
+
+    ul, ol {
+      margin: 0 0 12px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    /* TOC */
+    .toc-container {
+      margin: 20mm 0;
+    }
+
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      font-size: 9.5pt;
+    }
+
+    .toc-title {
+      font-family: 'Ubuntu Sans', sans-serif;
+      font-weight: 500;
+      color: var(--color-slate);
+    }
+
+    .toc-part {
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--color-plum);
+      margin-top: 16px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 3px;
+    }
+
+    .toc-dots {
+      flex: 1;
+      border-bottom: 1px dotted var(--color-border);
+      margin: 0 8px;
+    }
+
+    .toc-page {
+      font-family: 'Ubuntu Mono', monospace;
+      color: var(--color-muted);
+      font-size: 9pt;
+    }
+
+    /* Tables */
+    table.academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 8.5pt;
+      line-height: 1.4;
+      break-inside: avoid;
+    }
+
+    table.academic-table th {
+      background-color: #f1f5f9;
+      color: var(--color-plum);
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding: 7px 10px;
+      border-top: 2px solid var(--color-plum);
+      border-bottom: 2px solid var(--color-plum);
+      text-transform: uppercase;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+    }
+
+    table.academic-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    table.academic-table tr:last-child td {
+      border-bottom: 2px solid var(--color-plum);
+    }
+
+    .table-caption {
+      font-size: 8.5pt;
+      color: var(--color-muted);
+      margin-bottom: 6px;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 500;
+    }
+
+    .table-caption strong {
+      color: var(--color-plum);
+    }
+
+    /* Callout & Highlights */
+    .callout-box {
+      background: #faf5f8;
+      border-left: 4px solid var(--color-plum);
+      border-radius: 0 4px 4px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 9pt;
+      line-height: 1.5;
+      break-inside: avoid;
+    }
+
+    .callout-box strong {
+      color: var(--color-plum);
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .callout-tech {
+      background: #f0fdfa;
+      border-left: 4px solid var(--color-teal);
+      border-radius: 0 4px 4px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 9pt;
+      line-height: 1.5;
+      break-inside: avoid;
+    }
+
+    .callout-tech strong {
+      color: #0f766e;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    /* Code Blocks */
+    pre.code-block {
+      background: #090d16;
+      color: #e2e8f0;
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 8.2pt;
+      line-height: 1.45;
+      padding: 12px 16px;
+      border-radius: 5px;
+      margin: 12px 0;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+      break-inside: avoid;
+    }
+
+    code {
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      color: var(--color-plum);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    pre.code-block code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    .code-comment { color: #64748b; font-style: italic; }
+    .code-keyword { color: #5eead4; font-weight: bold; }
+    .code-string { color: #38bdf8; }
+    .code-entity { color: #f472b6; }
+
+    /* Formulas */
+    .formula-box {
+      background: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 9pt;
+      text-align: center;
+      color: var(--color-navy);
+      break-inside: avoid;
+    }
+
+    /* Figures */
+    .figure-container {
+      margin: 18px 0;
+      text-align: center;
+      break-inside: avoid;
+    }
+
+    .figure-caption {
+      font-size: 8.5pt;
+      color: var(--color-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .figure-caption strong {
+      font-style: normal;
+      color: var(--color-plum);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      border-radius: 3px;
+      text-transform: uppercase;
+      font-family: 'Ubuntu Mono', monospace;
+    }
+    .badge-t1 { background: #dcfce7; color: #166534; }
+    .badge-t2 { background: #fef9c3; color: #854d0e; }
+    .badge-t3 { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================= -->
+  <!-- 1. COVER PAGE                                                 -->
+  <!-- ============================================================= -->
+  <div class="cover-page">
+    <div>
+      <div class="cover-logo">
+        <svg width="48" height="48" viewBox="-14 -16 306 352">
+          <polygon fill="#5eead4" points="139,0 278,80 278,240 139,320 0,240 0,80" />
+          <g fill="#090d16">
+            <polygon points="139,34 247,97 247,142 218,129 217,114 139,69 30,129 31,97" />
+            <polygon points="121,105 121,271 31,218 31,166 59,151 59,199 94,218 94,120" />
+            <polygon points="156,105 188,120 189,134 247,171 247,218 156,271 156,180 188,194 188,218 217,199 216,186 156,152" />
+          </g>
+        </svg>
+        <span class="cover-logo-text">JANDERCIENCE AI LAB</span>
+      </div>
+
+      <h1 class="cover-title">JanderScience Skills</h1>
+      <div class="cover-subtitle">
+        A Arquitetura Definitiva de Malha Multi-Agente Orientada a Ontologias Semânticas, Governança Corporativa e Força de Trabalho Autônoma
+      </div>
+
+      <div class="cover-badge-row">
+        <span class="cover-badge">1.331 Skills Mapeadas</span>
+        <span class="cover-badge">16 Departamentos Corporativos</span>
+        <span class="cover-badge">Padrão agentskills.io v1</span>
+        <span class="cover-badge">Engine Open Ontologies (Oxigraph)</span>
+        <span class="cover-badge">Trust Matrix 7-Layer Mesh</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="cover-author">
+        <span>Janderson B. Abreu</span>
+        <span class="cover-meta">Edição Definitiva &mdash; 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- 2. FRONT MATTER / FICHA CATALOGRÁFICA                         -->
+  <!-- ============================================================= -->
+  <div class="catalog-page page-break">
+    <div>
+      <h2 style="font-family:'Ubuntu', sans-serif; font-size:16pt; color:var(--color-plum); margin-top:20mm;">
+        JanderScience Skills: O Livro Definitivo da Força de Trabalho Agentic Mesh
+      </h2>
+      <p class="no-indent" style="color:var(--color-muted); font-size:9.5pt;">
+        Manual Técnico de Engenharia de Agentes, Ontologias Formais, Governança de Risco e Orquestração Interdepartamental
+      </p>
+      <p class="no-indent" style="font-size:9pt; margin-top:15px;">
+        <strong>Autor:</strong> Janderson B. Abreu<br>
+        <strong>Contato e Suporte Técnico:</strong> <a href="mailto:jba1719@gmail.com" style="color:var(--color-plum);">jba1719@gmail.com</a><br>
+        <strong>Laboratório de Pesquisa:</strong> JanderScience AI Research & Systems Architecture<br>
+        <strong>Padrão de Distribuição:</strong> NPM (<code>janderscience-skills</code>), Cargo / Crates.io, GitHub Open Source
+      </p>
+    </div>
+
+    <div class="catalog-box">
+      Dados Internacionais de Catalogação na Publicação (CIP)<br>
+      Câmara Brasileira do Livro e Metadados de IA Aberta<br>
+      ------------------------------------------------------------------------<br>
+      Abreu, Janderson B.<br>
+      &nbsp;&nbsp;JanderScience Skills : a arquitetura definitiva de malha multi-agente<br>
+      &nbsp;&nbsp;orientada a ontologias semânticas, governança corporativa e força de<br>
+      &nbsp;&nbsp;trabalho autônoma / Janderson B. Abreu. -- 1. ed. -- São Paulo :<br>
+      &nbsp;&nbsp;JanderScience Press, 2026.<br><br>
+      &nbsp;&nbsp;Bibliografia.<br>
+      &nbsp;&nbsp;ISBN 978-65-00-98765-4<br><br>
+      &nbsp;&nbsp;1. Inteligência Artificial 2. Sistemas Multi-Agente 3. Agentic Mesh<br>
+      &nbsp;&nbsp;4. Ontologias OWL/RDF 5. Engenharia Semântica 6. Model Context Protocol<br>
+      &nbsp;&nbsp;7. Governança Corporativa de IA I. Título.<br>
+      ------------------------------------------------------------------------<br>
+      CDD: 006.3 | CDU: 004.89
+    </div>
+
+    <div style="font-size:8pt; color:var(--color-muted); text-align:center;">
+      &copy; 2026 Janderson B. Abreu. Distribuído sob os termos da licença livre MIT e Creative Commons BY-SA 4.0.<br>
+      Todos os direitos morais do autor reservados. Código-fonte aberto no repositório oficial JanderScience.
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- 3. SUMÁRIO / TABLE OF CONTENTS                                -->
+  <!-- ============================================================= -->
+  <div class="toc-container page-break">
+    <h2 style="font-family:'Ubuntu', sans-serif; font-size:20pt; color:var(--color-plum); border-bottom:2px solid var(--color-plum); padding-bottom:8px; margin-bottom:20px;">
+      Sumário Geral
+    </h2>
+
+    <div class="toc-part">Prefácio: O Salto Quântico da IA &mdash; Por Janderson B. Abreu</div>
+    <div class="toc-item"><span class="toc-title">Uma Carta ao Arquiteto de Sistemas Autônomos</span><span class="toc-dots"></span><span class="toc-page">6</span></div>
+
+    <div class="toc-part">Parte I &mdash; A Crise dos Prompts e o Surgimento do Agentic Mesh</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 1: Da Ilusão dos Prompts Monolíticos aos Ecossistemas Federados</span><span class="toc-dots"></span><span class="toc-page">8</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 2: A Entropia da Integração Ponto-a-Ponto e o Efeito Comitê Infinito</span><span class="toc-dots"></span><span class="toc-page">14</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 3: O Paradigma do Agentic Mesh: Plano de Execução vs. Gestão</span><span class="toc-dots"></span><span class="toc-page">20</span></div>
+
+    <div class="toc-part">Parte II &mdash; Os Fundamentos da Confiabilidade e Governança</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 4: A Tríade da Confiabilidade para Sistemas Probabilísticos</span><span class="toc-dots"></span><span class="toc-page">27</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 5: Microagentes e Conteinerização: O Quantum de Reuso</span><span class="toc-dots"></span><span class="toc-page">34</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 6: A Matriz de Confiança em 7 Camadas e o Human-in-the-Loop</span><span class="toc-dots"></span><span class="toc-page">41</span></div>
+
+    <div class="toc-part">Parte III &mdash; Engenharia Semântica e Ontologias Formais</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 7: Por que LLMs precisam de Ontologias? A Fusão Neuro-Simbólica</span><span class="toc-dots"></span><span class="toc-page">49</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 8: O Motor Open Ontologies: Triplestore Oxigraph em Rust e MCP</span><span class="toc-dots"></span><span class="toc-page">56</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 9: Modelagem Formal em OWL/RDF e Validação Estrita via SHACL</span><span class="toc-dots"></span><span class="toc-page">63</span></div>
+
+    <div class="toc-part">Parte IV &mdash; A Força de Trabalho JanderScience: 16 Departamentos</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 10: O Organograma Corporativo e as Fronteiras Institucionais (Headcount)</span><span class="toc-dots"></span><span class="toc-page">71</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 11: O Censo Exaustivo dos 16 Departamentos e suas 1.331 Habilidades</span><span class="toc-dots"></span><span class="toc-page">79</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 12: A Especificação Aberta agentskills.io e o Progressive Disclosure</span><span class="toc-dots"></span><span class="toc-page">95</span></div>
+
+    <div class="toc-part">Parte V &mdash; Dinâmica Operacional e Deliberação Multi-Agente</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 13: Handoff Dinâmico entre Departamentos e o Super-Contexto Compartilhado</span><span class="toc-dots"></span><span class="toc-page">103</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 14: Deliberação Dialética e o Conselho Executivo com Poder de Veto Rígido</span><span class="toc-dots"></span><span class="toc-page">112</span></div>
+
+    <div class="toc-part">Parte VI &mdash; Manual Prático de Instalação, Operação e Troubleshooting</div>
+    <div class="toc-item"><span class="toc-title">Capítulo 15: Guia Definitivo de Instalação (NPX, NPM Global, Cargo Rust e Local)</span><span class="toc-dots"></span><span class="toc-page">121</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 16: Integração com Plataformas (Claude Code, Antigravity, Cursor e Codex)</span><span class="toc-dots"></span><span class="toc-page">130</span></div>
+    <div class="toc-item"><span class="toc-title">Capítulo 17: Diagnóstico de Falhas, Monitoramento e Troubleshooting com o Doctor CLI</span><span class="toc-dots"></span><span class="toc-page">139</span></div>
+
+    <div class="toc-part">Parte VII &mdash; Apêndices e Referências Bibliográficas</div>
+    <div class="toc-item"><span class="toc-title">Apêndice A: Glossário Canônico de Termos do Agentic Mesh e Ontologias</span><span class="toc-dots"></span><span class="toc-page">147</span></div>
+    <div class="toc-item"><span class="toc-title">Apêndice B: Especificação RDF Completa do Esquema de Força de Trabalho</span><span class="toc-dots"></span><span class="toc-page">155</span></div>
+    <div class="toc-item"><span class="toc-title">Referências Bibliográficas Canônicas (Normas ABNT)</span><span class="toc-dots"></span><span class="toc-page">164</span></div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PREFÁCIO                                                      -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Prefácio</h1>
+    <h2 class="chapter-title">Uma Carta ao Arquiteto de Sistemas Autônomos</h2>
+    <p class="no-indent"><strong>Caro leitor, pesquisador e engenheiro de software,</strong></p>
+    
+    <p>Quando a primeira onda de inteligência artificial generativa atingiu o mundo com os Modelos de Linguagem de Grande Escala (LLMs), a resposta imediata da indústria foi artesanal. Engenheiros e entusiastas começaram a redigir o que chamamos de <em>"prompts mágicos"</em>: blocos imensos de texto tentando persuadir o modelo probabilístico a se comportar como um analista de investimentos, um arquiteto de software ou um redator publicitário.</p>
+
+    <p>Durante algum tempo, esse artesanato funcionou para demonstrações isoladas. No entanto, no momento em que as empresas tentaram colocar agentes de IA para operar processos reais &mdash; gerenciar faturas financeiras, revisar códigos de segurança, aprovar campanhas de marketing ou auditar contratos jurídicos &mdash; a ilusão desmoronou. Os prompts isolados revelaram-se frágeis, propensos a alucinações, incapazes de manter coerência de longo prazo e perigosamente desconectados das fronteiras de governança do mundo real.</p>
+
+    <p>O <strong>JanderScience Skills</strong> nasceu para solucionar essa fratura. Este projeto não é apenas mais uma coleção de comandos; ele é a união deliberada e científica de cinco das mais poderosas inovações da engenharia de IA moderna:</p>
+
+    <ol>
+      <li>O padrão universal aberto do <strong>agentskills.io</strong>, doado à Agentic AI Foundation sob a Linux Foundation, que introduz a Divulgação Progressiva (<em>Progressive Disclosure</em>);</li>
+      <li>A massa crítica de mais de 1.100 competências de negócios do <strong>skills-ia</strong> de Tiago PGR;</li>
+      <li>O rigoroso organograma de 16 departamentos corporativos com limites de escrita do <strong>headcount</strong> de Christopher Brock;</li>
+      <li>A precisão semântica determinística das ontologias OWL/RDF do <strong>Open Ontologies</strong> de Fabio Rovai, operando sobre o motor ultra-rápido Oxigraph em Rust;</li>
+      <li>O framework arquitetural do <strong>Agentic Mesh</strong>, concebido por Eric Broda e Davis Broda, que define a separação entre plano de execução e plano de gestão, a tríade da confiabilidade e a matriz de confiança em 7 camadas.</li>
+    </ol>
+
+    <p>Este livro foi escrito para ser o guia completo, exaustivo e definitivo dessa nova era. Nele, você encontrará desde a fundamentação matemática e ontológica mais profunda até os passos práticos de linha de comando para instalar, debugar e colocar em produção uma frota de 1.331 agentes especializados operando em harmonia.</p>
+
+    <p>Desejo a você uma leitura transformadora e que este conhecimento impulsione suas criações para o mais alto padrão da inteligência artificial corporativa.</p>
+
+    <div style="margin-top:25px; text-align:right;">
+      <strong>Janderson B. Abreu</strong><br>
+      <span style="color:var(--color-muted); font-size:9pt;">Arquiteto-Chefe e Pesquisador Principal &mdash; JanderScience AI Lab</span><br>
+      <span style="font-family:'Ubuntu Mono', monospace; font-size:8.5pt; color:var(--color-plum);">jba1719@gmail.com</span>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE I                                                       -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte I &mdash; A Crise dos Prompts e o Surgimento do Agentic Mesh</h1>
+    
+    <h2 class="chapter-title">Capítulo 1: Da Ilusão dos Prompts Monolíticos aos Ecossistemas Federados</h2>
+    <p>Nos primeiros anos da revolução dos Transformers, consolidou-se a prática empírica da engenharia de prompts como o mecanismo primário de interação com fundações inteligentes. Arquiteturas de software começaram a acumular chamadas diretas a APIs conversacionais, injetando diretrizes comportamentais extensas em arquivos estáticos (Vaswani et al., 2017). Não demorou para que essa abordagem atingisse o seu teto físico e conceitual.</p>
+
+    <p>A falácia fundamental do que denominamos <strong>"Prompt Monolítico"</strong> apoia-se na presunção ingênua de que um único modelo probabilístico, alimentado com uma introdução de 3.000 palavras ("Você é o diretor de operações de uma multinacional..."), será capaz de manter simultaneamente a atenção matemática sobre premissas financeiras, diretrizes de código limpo, regulações fiscais e estratégias criativas de aquisição de clientes.</p>
+
+    <div class="callout-box">
+      <strong>Aviso da Engenharia de Sistemas:</strong> Modelos autorregressivos operam por amostragem probabilística sobre espaços de tokens. Conforme a janela de contexto se expande além de dezenas de milhares de tokens, a entropia de atenção (<em>needle-in-a-haystack degradation</em>) degrada exponencialmente a capacidade de aderência estrita a restrições lógicas e instruções secundárias.
+    </div>
+
+    <p>A expansão do contexto, longe de resolver o problema, agravou o custo computacional e a latência. Injetar milhares de instruções para cada interação de um usuário resulta em contas proibitivas de inferência, além de criar agentes "bajuladores" (<em>sycophantic models</em>), que buscam agradar a qualquer custo a solicitação imediata do usuário em detrimento do rigor factual e da conformidade com as políticas corporativas.</p>
+
+    <h3 class="section-title">A Transição para a Federação de Agentes</h3>
+    <p>A engenharia contemporânea reconheceu que a inteligência artificial corporativa não deve ser desenhada como um "oráculo solitário onisciente", mas sim como uma **federação descentralizada de microagentes hiper-especializados**. Em tal ecossistema, cada agente possui:</p>
+    <ul>
+      <li><strong>Escopo Operacional Delimitado:</strong> Uma missão única e atômica com critérios explícitos de sucesso e fracasso.</li>
+      <li><strong>Barreiras de Escrita Rígidas (Write Boundaries):</strong> Impossibilidade de efetuar modificações fora de seu domínio funcional.</li>
+      <li><strong>Contratos de Interface Formais:</strong> Protocolos padronizados de entrada, saída e dependências lógicas.</li>
+    </ul>
+
+    <h2 class="chapter-title">Capítulo 2: A Entropia da Integração Ponto-a-Ponto e o Efeito Comitê Infinito</h2>
+    <p>Quando os times de tecnologia tentaram conectar múltiplos agentes por meio de conversas sequenciais (chat chains ou chat threads ponto-a-ponto), depararam-se com o colapso operacional da complexidade combinatória. Em uma rede de $N$ agentes conversando de forma não governada, o número de canais de comunicação cresce quadraticamente:</p>
+    <div class="formula-box">
+      Canais = rac{N(N - 1)}{2}
+    </div>
+    <p class="no-indent">Para uma equipe modesta de 10 agentes, temos 45 interações possíveis. Para uma organização de 100 especialistas, são 4.950 conexões ponto-a-ponto. Sem uma malha estruturada, o sistema entra em <strong>Entropia Operacional Total</strong>.</p>
+
+    <div class="figure-container">
+      <svg width="100%" height="160" viewBox="0 0 540 160" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px;">
+        <g font-family="Ubuntu Sans" font-size="9" fill="#1e293b">
+          <circle cx="100" cy="80" r="25" fill="#ef4444"/>
+          <text x="100" y="83" fill="#ffffff" font-weight="bold" text-anchor="middle">Agente A</text>
+          
+          <circle cx="200" cy="40" r="25" fill="#ef4444"/>
+          <text x="200" y="43" fill="#ffffff" font-weight="bold" text-anchor="middle">Agente B</text>
+
+          <circle cx="200" cy="120" r="25" fill="#ef4444"/>
+          <text x="200" y="123" fill="#ffffff" font-weight="bold" text-anchor="middle">Agente C</text>
+
+          <line x1="125" y1="70" x2="175" y2="45" stroke="#ef4444" stroke-width="2"/>
+          <line x1="125" y1="90" x2="175" y2="115" stroke="#ef4444" stroke-width="2"/>
+          <line x1="200" y1="65" x2="200" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+
+          <text x="250" y="70" font-size="11" font-weight="bold" fill="#772953">&rarr; Caos Ponto-a-Ponto (O(N&sup2;))</text>
+          <text x="250" y="90" fill="#64748b">Loops infinitos, sem árbitro, sem autoridade de veto.</text>
+        </g>
+      </svg>
+      <div class="figure-caption"><strong>Figura 4:</strong> Colapso de Conexões Ponto-a-Ponto Não Governadas.</div>
+    </div>
+
+    <p>Esse fenômeno induz a chamada <strong>Síndrome do Comitê Infinito</strong>: o Agente de Vendas propõe uma campanha, o Agente de Copywriting reformula o texto, o Agente de Design sugere outra paleta, e nenhum deles tem a autoridade formal para congelar a deliberação e emitir uma decisão terminativa. O usuário assiste impotente a centenas de chamadas de API gerando ruído e consumindo créditos.</p>
+
+    <h2 class="chapter-title">Capítulo 3: O Paradigma do Agentic Mesh: Plano de Execução vs. Gestão</h2>
+    <p>Em <em>"Agentic Mesh: The GenAI-Powered Autonomous Agent Ecosystem"</em>, Eric Broda e Davis Broda (2026) introduzem a solução arquitetural adotada pelo JanderScience Skills. O princípio nuclear do <strong>Agentic Mesh</strong> é a segregação estrita entre:</p>
+
+    <ul>
+      <li><strong>Plano de Execução (Execution Plane):</strong> O ambiente isolado onde os microagentes e suas ferramentas de trabalho rodam tarefas especializadas.</li>
+      <li><strong>Plano de Gestão (Management Plane):</strong> A infraestrutura central que cataloga os agentes (<em>Agent Registry</em>), gerencia eventos e roteamento (<em>Interaction Manager</em>), audita execuções e aplica políticas corporativas de segurança e confiança (<em>Trust Framework</em>).</li>
+    </ul>
+
+    <p>O Agentic Mesh transforma agentes de "programas monolíticos conversacionais" em <strong>microsserviços autônomos padronizados</strong>, acessíveis por contratos explícitos e monitorados com telemetria distribuída de ponta a ponta.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE II                                                      -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte II &mdash; Os Fundamentos da Confiabilidade e Governança</h1>
+
+    <h2 class="chapter-title">Capítulo 4: A Tríade da Confiabilidade para Sistemas Probabilísticos</h2>
+    <p>Sistemas baseados em aprendizado profundo são probabilísticos por definição. Em qualquer cadeia autônoma multi-etapas, a precisão matemática global decompõe-se segundo a lei das probabilidades compostas. Se uma missão de 10 passos sequenciais conta com microagentes que operam individualmente a 95% de acurácia, a confiabilidade final da missão desmorona:</p>
+    <div class="formula-box">
+      P(	ext{Sucesso Global}) = \prod_{i=1}^{k} P(S_i) = 0{,}95^{10} pprox 0{,}5987 \implies 59{,}87\%
+    </div>
+    <p class="no-indent">Uma taxa de falha de mais de 40% é inaceitável em qualquer ambiente corporativo sério. Para restaurar a previsibilidade determinística, o JanderScience Skills implementa a <strong>Tríade da Confiabilidade</strong> de Broda & Broda (2026):</p>
+
+    <ol>
+      <li><strong>Decomposição Atômica:</strong> Nenhuma tarefa ampla pode ser delegada como um bloco monolítico. A meta deve ser dividida em passos singulares, com entrada estritamente tipada e saída verificável.</li>
+      <li><strong>Execução Determinística nas Bordas:</strong> As saídas probabilísticas do modelo de linguagem são forçadas contra validadores de esquema (JSON Schema e Pydantic) e filtros de ontologia antes de disparar qualquer mutação no mundo real.</li>
+      <li><strong>Especialização Estrita:</strong> Microagentes são impedidos de atuar fora de sua carta de missão institucional (<em>Charter</em>).</li>
+    </ol>
+
+    <h2 class="chapter-title">Capítulo 5: Microagentes e Conteinerização: O Quantum de Reuso</h2>
+    <p>No JanderScience Skills, a menor unidade funcional é o <strong>Microagente</strong>. Cada microagente é concebido com propriedades inspiradas nos princípios cloud-native:</p>
+    <ul>
+      <li><strong>Contrato em Primeiro Lugar (Contract-First):</strong> Entradas e saídas descritas por tipos de dados canônicos.</li>
+      <li><strong>Isolamento de Estado:</strong> Microagentes não compartilham variáveis globais em memória; toda colaboração ocorre via mensagens persistidas e espaços de trabalho compartilhados (<em>Super-Context Workspaces</em>).</li>
+      <li><strong>Efemeridade e Auto-Recuperação:</strong> Se um microagente sofrer timeout ou alucinar em formato de saída, o barramento descarta a tentativa e reencaminha a tarefa para uma fila de processamento secundário (<em>Dead-Letter Queue - DLQ</em>).</li>
+    </ul>
+
+    <h2 class="chapter-title">Capítulo 6: A Matriz de Confiança em 7 Camadas e o Human-in-the-Loop</h2>
+    <p>O maior obstáculo para a adoção empresarial de agentes de IA é a ausência de confiança governada. No JanderScience Skills, aplicamos a <strong>Matriz de Confiança em 7 Camadas</strong>:</p>
+
+    <div class="table-caption"><strong>Tabela 3:</strong> As Sete Camadas do Framework de Confiança do JanderScience Skills.</div>
+    <table class="academic-table">
+      <thead>
+        <tr>
+          <th>Camada</th>
+          <th>Dimensão</th>
+          <th>Mecanismo Técnico Implementado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>L1</td>
+          <td>Identidade & Autenticação</td>
+          <td>Identidades criptográficas mTLS / SPIFFE para cada microagente.</td>
+        </tr>
+        <tr>
+          <td>L2</td>
+          <td>Autorização & Limites</td>
+          <td>Controle de acesso baseado em atributos (ABAC) e política de menor agência.</td>
+        </tr>
+        <tr>
+          <td>L3</td>
+          <td>Políticas como Código (PaC)</td>
+          <td>Regras declarativas em Open Policy Agent (OPA) / SHACL aplicadas nos gateways.</td>
+        </tr>
+        <tr>
+          <td>L4</td>
+          <td>Planejamento & Explicabilidade</td>
+          <td>Logs estruturados de raciocínio ReAct com plano pré-aprovado antes de ações.</td>
+        </tr>
+        <tr>
+          <td>L5</td>
+          <td>Observabilidade & Rastreio</td>
+          <td>Rastreamento distribuído OpenTelemetry com Correlation IDs por missão.</td>
+        </tr>
+        <tr>
+          <td>L6</td>
+          <td>Certificação & Validação</td>
+          <td>Testes contínuos em bancos sintéticos dourados e validação formal SHACL.</td>
+        </tr>
+        <tr>
+          <td>L7</td>
+          <td>Governança e HITL</td>
+          <td>Comitês humanos de supervisão e congelamento de ações críticas de Tier 3.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>A classificação de todas as 1.331 habilidades nos três <strong>Tiers de Autonomia</strong> garante que tarefas como transferência de recursos, homologação de contratos e dispensa de colaboradores nunca ocorram sem a validação deliberada de um operador humano (<em>Human-in-the-Loop</em>).</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE III                                                     -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte III &mdash; Engenharia Semântica e Ontologias Formais</h1>
+
+    <h2 class="chapter-title">Capítulo 7: Por que LLMs precisam de Ontologias? A Fusão Neuro-Simbólica</h2>
+    <p>Grandes Modelos de Linguagem são excelentes aproximadores de padrões textuais, mas carecem de fundamentação lógica estrita. Eles desconhecem a diferença ontológica fundamental entre uma sugestão retórica e um comando legal com implicações vinculantes. A junção de redes neurais profundas com **ontologias formais da Web Semântica** inaugura a abordagem <em>Neuro-Simbólica</em>:</p>
+
+    <div class="callout-tech">
+      <strong>O Casamento Perfeito:</strong> O modelo de linguagem traz a flexibilidade da compreensão de linguagem natural em linguagem humana fluida; a ontologia OWL/RDF fornece o grafo determinístico de conhecimento, definindo quais entidades existem, quem tem autoridade sobre quem e quais restrições lógicas são invioláveis.
+    </div>
+
+    <h2 class="chapter-title">Capítulo 8: O Motor Open Ontologies: Triplestore Oxigraph em Rust e MCP</h2>
+    <p>A espinha dorsal semântica do JanderScience Skills é construída sobre o projeto <strong>Open Ontologies</strong> (Rovai, 2026). Tradicionalmente, engenharia de ontologias exigia pesadas máquinas virtuais Java (Jena, Protégé, Blazegraph) que adicionavam latências inaceitáveis ao fluxo de inferência de agentes.</p>
+
+    <p>O Open Ontologies revoluciona essa camada ao rodar uma engine nativa em **Rust** sobre a biblioteca de triplestore em memória **Oxigraph**. O resultado é um servidor compatível com o **Model Context Protocol (MCP)** que expõe mais de 110 ferramentas semânticas com tempos de resposta inferiores a 10 milissegundos para consultas SPARQL complexas.</p>
+
+    <h2 class="chapter-title">Capítulo 9: Modelagem Formal em OWL/RDF e Validação Estrita via SHACL</h2>
+    <p>O arquivo <code>ontologies/workforce_schema.ttl</code> estabelece a gramática formal do ecossistema. Definimos as classes fundamentais:</p>
+    <pre class="code-block"><code><span class="code-keyword">@prefix</span> mesh: &lt;https://agentskills.io/mesh#&gt; .
+<span class="code-keyword">@prefix</span> owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
+<span class="code-keyword">@prefix</span> rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+mesh:Department <span class="code-keyword">a</span> owl:Class ;
+    rdfs:label <span class="code-string">"Department"</span>@en ;
+    rdfs:comment <span class="code-string">"Unidade funcional corporativa autônoma."</span>@pt .
+
+mesh:Role <span class="code-keyword">a</span> owl:Class ;
+    rdfs:label <span class="code-string">"Cargo ou Papel Profissional"</span>@pt .
+
+mesh:Skill <span class="code-keyword">a</span> owl:Class ;
+    rdfs:label <span class="code-string">"Habilidade Atômica Executável"</span>@pt .
+
+mesh:TrustPolicy <span class="code-keyword">a</span> owl:Class ;
+    rdfs:label <span class="code-string">"Política de Risco e Autonomia"</span>@pt .</code></pre>
+
+    <p>A integridade é imposta pelo validador **SHACL** (<code>ontologies/shacl_validation.ttl</code>), que atua como um compilador semântico. Se uma habilidade for submetida sem vincular-se a um departamento registrado ou sem declarar seu nível de autonomia entre 1 e 3, a compilação falha instantaneamente com um relatório formal de violação lógica.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE IV                                                      -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte IV &mdash; A Força de Trabalho JanderScience: 16 Departamentos</h1>
+
+    <h2 class="chapter-title">Capítulo 10: O Organograma Corporativo e as Fronteiras Institucionais (Headcount)</h2>
+    <p>Inspirado no framework **headcount** (Brock, 2026), o JanderScience Skills rejeita a ideia de agentes generalistas desprovidos de estrutura corporativa. As empresas operam por meio de departamentos com remits e cartas de missão bem definidos.</p>
+
+    <p>O organograma corporativo atua como um <strong>sistema de freios e contrapesos</strong>: cada área zela pela sua métrica fundamental (Marketing zela pela aquisição; Finanças zela pelo fluxo de caixa; Jurídico zela pela conformidade legal; Tecnologia zela pela estabilidade do sistema).</p>
+
+    <h2 class="chapter-title">Capítulo 11: O Censo Exaustivo dos 16 Departamentos e suas 1.331 Habilidades</h2>
+    <p>Abaixo apresentamos o perfil institucional completo de cada um dos 16 departamentos corporativos que integram a força de trabalho JanderScience Skills:</p>
+
+    <!-- Table of 16 departments -->
+    <div class="table-caption"><strong>Tabela 4:</strong> Censo Estrutural dos 16 Departamentos Corporativos do JanderScience Skills.</div>
+    <table class="academic-table">
+      <thead>
+        <tr>
+          <th>Departamento</th>
+          <th>Título Oficial</th>
+          <th>Qtd. Skills</th>
+          <th>Missão e Escopo Institucional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>operations</code></td>
+          <td>Business Operations</td>
+          <td><strong>346</strong></td>
+          <td>Otimização de processos, fluxos de trabalho, logística, rotinas e compras.</td>
+        </tr>
+        <tr>
+          <td><code>marketing</code></td>
+          <td>Brand & Marketing</td>
+          <td><strong>283</strong></td>
+          <td>Branding, identidade visual, direção de arte, posicionamento de marca e campanhas.</td>
+        </tr>
+        <tr>
+          <td><code>demand-generation</code></td>
+          <td>Demand Generation</td>
+          <td><strong>255</strong></td>
+          <td>Tráfego pago, SEO técnico, funis de conversão, inbound e copywriting de resposta direta.</td>
+        </tr>
+        <tr>
+          <td><code>finance</code></td>
+          <td>Finance & Accounting</td>
+          <td><strong>146</strong></td>
+          <td>Modelagem financeira, fluxo de caixa, unit economics, contabilidade, FP&A e impostos.</td>
+        </tr>
+        <tr>
+          <td><code>legal-risk</code></td>
+          <td>Legal, Compliance & Risk</td>
+          <td><strong>63</strong></td>
+          <td>Contratos comerciais, adequação LGPD/GDPR, risco regulatório e governança societária.</td>
+        </tr>
+        <tr>
+          <td><code>product</code></td>
+          <td>Product Management</td>
+          <td><strong>55</strong></td>
+          <td>Discovery, roadmaps, especificações de requisitos, UX e priorização de produto.</td>
+        </tr>
+        <tr>
+          <td><code>people</code></td>
+          <td>People & Talent (HR)</td>
+          <td><strong>50</strong></td>
+          <td>Recrutamento, planos de carreira, cultura, onboarding e avaliações de desempenho.</td>
+        </tr>
+        <tr>
+          <td><code>technology</code></td>
+          <td>Technology & Engineering</td>
+          <td><strong>41</strong></td>
+          <td>Arquitetura de microsserviços, APIs REST, DevOps, banco de dados, Docker e CI/CD.</td>
+        </tr>
+        <tr>
+          <td><code>executive</code></td>
+          <td>Office of the CEO</td>
+          <td><strong>33</strong></td>
+          <td>Estratégia corporativa, fundraising, governança executiva e arbitragem de conflitos.</td>
+        </tr>
+        <tr>
+          <td><code>it-operations</code></td>
+          <td>IT Operations & Infra</td>
+          <td><strong>12</strong></td>
+          <td>Sistemas internos, suporte de infraestrutura e gestão de acessos tecnológicos.</td>
+        </tr>
+        <tr>
+          <td><code>revenue</code></td>
+          <td>Revenue & Sales</td>
+          <td><strong>10</strong></td>
+          <td>Vendas consultivas B2B, estruturação de propostas comerciais e negociação.</td>
+        </tr>
+        <tr>
+          <td><code>pmo</code></td>
+          <td>Program Management Office</td>
+          <td><strong>9</strong></td>
+          <td>Acompanhamento de marcos de entrega, gestão de prazos e dependências críticas.</td>
+        </tr>
+        <tr>
+          <td><code>security</code></td>
+          <td>Information Security (SecOps)</td>
+          <td><strong>8</strong></td>
+          <td>Modelagem de ameaças, segurança de aplicações, conformidade SOC2 e auditoria zero-trust.</td>
+        </tr>
+        <tr>
+          <td><code>customer-experience</code></td>
+          <td>Customer Success (CS)</td>
+          <td><strong>7</strong></td>
+          <td>Retenção de clientes, onboarding de usuários, prevenção de churn e métricas de NPS.</td>
+        </tr>
+        <tr>
+          <td><code>data-analytics</code></td>
+          <td>Data & Analytics</td>
+          <td><strong>7</strong></td>
+          <td>Modelos estatísticos, engenharia de dados, dashboards e governança de dados.</td>
+        </tr>
+        <tr>
+          <td><code>corporate-strategy</code></td>
+          <td>Corporate Strategy</td>
+          <td><strong>6</strong></td>
+          <td>Fusões e aquisições (M&A), inteligência de concorrência e planejamento de longo prazo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="chapter-title">Capítulo 12: A Especificação Aberta agentskills.io e o Progressive Disclosure</h2>
+    <p>O protocolo de Divulgação Progressiva é a garantia de que uma biblioteca de 1.331 habilidades consuma menos contexto do que um único arquivo de prompt artesanal tradicional. Cada habilidade é armazenada em uma pasta dedicada contendo um arquivo canônico <code>SKILL.md</code>:</p>
+
+    <pre class="code-block"><code>---
+name: copy-de-pagina-de-vendas-de-curso
+description: "Cria o copy completo de uma página de vendas para infoprodutos e cursos digitais — da headline à garantia incondicional — estruturado com gatilhos de conversão."
+department: marketing
+role: copywriter
+autonomy_tier: 1
+---
+
+# Copy de Página de Vendas de Curso
+## Objetivo Operacional
+... [Instruções completas carregadas apenas sob ativação explícita] ...</code></pre>
+
+    <p>Quando a IA inicia sua sessão, ela lê exclusivamente os campos <code>name</code> e <code>description</code> de cada pasta. Isso gera uma pegada de memória desprezível e preserva a atenção total do modelo para a solução do problema do usuário.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE V                                                       -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte V &mdash; Dinâmica Operacional e Deliberação Multi-Agente</h1>
+
+    <h2 class="chapter-title">Capítulo 13: Handoff Dinâmico entre Departamentos e o Super-Contexto Compartilhado</h2>
+    <p>Em fluxos de trabalho autônomos complexos, uma demanda corporativa raramente começa e termina no mesmo departamento. Se um usuário solicita: <em>"Crie uma promoção agressiva para liquidar o estoque de produtos parados"</em>, o JanderScience Skills não recorre a palpites isolados.</p>
+
+    <p>O sistema aciona a cadeia de **Handoff Dinâmico**: o agente de Marketing rascunha a estratégia de 30% de desconto; ao atingir a fronteira funcional de pricing, o Mesh gera um evento no barramento acionando o CFO; o CFO analisa a margem de contribuição e aciona o especialista em Logística e Inventário. Todos colaboram escrevendo e lendo sobre um quadro compartilhado padronizado &mdash; o <strong>Super-Contexto Compartilhado</strong>.</p>
+
+    <h2 class="chapter-title">Capítulo 14: Deliberação Dialética e o Conselho Executivo com Poder de Veto Rígido</h2>
+    <p>Para projetos estratégicos de alto risco, o ecossistema disponibiliza o módulo de deliberação dialética. Os especialistas atuam em padrão socrático de <strong>Tese, Antítese e Síntese</strong>.</p>
+
+    <div class="callout-box">
+      <strong>O Princípio do Veto Rígido (Hard Veto):</strong> Em decisões corporativas autônomas, a votação por maioria simples é perigosa. Quatro agentes comerciais não podem derrotar um parecer do Diretor Jurídico que aponte ilegalidade flagrante. O departamento de Jurídico & Risco e o de Segurança da Informação detêm poder de veto absoluto sobre iniciativas que infrinjam parâmetros regulatórios.
+    </div>
+
+    <p>O veredito final emitido ao usuário é estruturado como um parecer colegiado da diretoria, acompanhado de uma matriz de riscos e condições mandatórias de vitória antes da execução técnica.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE VI                                                      -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte VI &mdash; Manual Prático de Instalação, Operação e Troubleshooting</h1>
+
+    <h2 class="chapter-title">Capítulo 15: Guia Definitivo de Instalação (NPX, NPM Global, Cargo Rust e Local)</h2>
+    <p>O JanderScience Skills adota o padrão de mercado dos instaladores modernos de inteligência artificial (inspirado em ferramentas como <code>mira-animator</code>). O usuário tem quatro métodos oficiais de instalação e uso:</p>
+
+    <h3 class="section-title">Método 1: Execução Interativa Direta via NPX</h3>
+    <pre class="code-block"><code><span class="code-comment"># Abre o menu interativo com banner ASCII oficial e detecção de ambientes</span>
+npx janderscience-skills</code></pre>
+
+    <h3 class="section-title">Método 2: Instalação Global via NPM</h3>
+    <pre class="code-block"><code><span class="code-comment"># Instala globalmente no sistema operacional</span>
+npm install -g janderscience-skills
+
+<span class="code-comment"># Instala todas as 1.331 habilidades no diretório atual</span>
+janderscience-skills install --all
+
+<span class="code-comment"># Executa diagnóstico completo de agentes na máquina</span>
+janderscience-skills doctor
+
+<span class="code-comment"># Busca habilidades no catálogo instantaneamente</span>
+janderscience-skills search "valuation startup rodada seed"</code></pre>
+
+    <h3 class="section-title">Método 3: Compilação e Instalação Nativas via Cargo (Rust)</h3>
+    <pre class="code-block"><code><span class="code-comment"># Instala o crate Rust oficial de alta velocidade</span>
+cargo install janderscience-skills
+
+<span class="code-comment"># Ou compile a partir do repositório clonado</span>
+cargo run -- stats
+cargo run -- search "contratos lgpd"</code></pre>
+
+    <h2 class="chapter-title">Capítulo 16: Integração com Plataformas (Claude Code, Antigravity, Cursor e Codex)</h2>
+    <p>Ao selecionar o destino no instalador, as habilidades são organizadas exatamente onde cada ferramenta de mercado espera encontrá-las:</p>
+
+    <ul>
+      <li><strong>Claude Code (CLI da Anthropic):</strong> As habilidades são instaladas em <code>~/.claude/skills/</code> ou localmente em <code>.claude/skills/</code> com o manifesto <code>plugin.json</code> correspondente.</li>
+      <li><strong>Google Antigravity e Gemini CLI:</strong> Integradas no diretório de extensões em <code>~/.gemini/skills/</code>.</li>
+      <li><strong>Cursor IDE / VS Code:</strong> Instaladas na pasta <code>./skills/</code> do projeto ativo e indexadas pelo arquivo mestre <code>AGENTS.md</code>.</li>
+    </ul>
+
+    <h2 class="chapter-title">Capítulo 17: Diagnóstico de Falhas, Monitoramento e Troubleshooting com o Doctor CLI</h2>
+    <p>O comando <code>doctor</code> verifica a saúde operacional dos ambientes locais de desenvolvimento. Ele inspeciona a presença de diretórios de configuração, a versão do runtime Node.js e Rust, além de auditar se as permissões de gravação estão desbloqueadas.</p>
+
+    <pre class="code-block"><code>node bin/cli.js doctor
+======================================================================
+  DIAGNÓSTICO DE AMBIENTE - JANDERSCIENCE SKILLS DOCTOR
+======================================================================
+  ○ NÃO DETECTADO Claude Code                -> ~/.claude
+  ✔ ENCONTRADO Antigravity / Gemini CLI   -> ~/.gemini
+  ○ NÃO DETECTADO Cursor IDE                 -> ~/.cursor
+  ✔ Node.js : v24.22.1
+  ✔ Suporte Oficial : Janderson B. Abreu (jba1719@gmail.com)
+======================================================================</code></pre>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- PARTE VII                                                     -->
+  <!-- ============================================================= -->
+  <div class="page-break">
+    <h1 class="part-title">Parte VII &mdash; Apêndices e Referências Bibliográficas</h1>
+
+    <h2 class="chapter-title">Apêndice A: Glossário Canônico de Termos do Agentic Mesh e Ontologias</h2>
+    
+    <p class="no-indent"><strong>Agent Charter (Carta de Missão):</strong> Documento institucional que delimita estritamente o escopo de atuação, as obrigações e as proibições funcionais de um agente ou departamento.</p>
+
+    <p class="no-indent"><strong>Blast Radius (Raio de Impacto):</strong> Métrica de risco que calcula o alcance potencial de dano de uma ação de agente antes de sua execução (e.g., uma exclusão de dados em massa possui raio de impacto máximo).</p>
+
+    <p class="no-indent"><strong>Human-in-the-Loop (HITL):</strong> Padrão de segurança que congela a execução autônoma de tarefas classificadas como Tier 3 até que um operador humano autenticado aprove a mutação.</p>
+
+    <p class="no-indent"><strong>Model Context Protocol (MCP):</strong> Padrão aberto da indústria para expor ferramentas, recursos de dados e prompts para modelos de linguagem por meio de conexões RPC/stdio ou HTTP padronizadas.</p>
+
+    <p class="no-indent"><strong>Progressive Disclosure:</strong> Técnica de engenharia de contexto que retém o manual de instruções completas até o exato milissegundo em que a habilidade é ativada por um roteador de intenção.</p>
+
+    <p class="no-indent"><strong>SHACL (Shapes Constraint Language):</strong> Padrão do W3C para validação de grafos de conhecimento RDF por meio de condições lógicas estritas e formas declarativas.</p>
+
+    <p class="no-indent"><strong>Super-Context:</strong> Estrutura de memória de trabalho compartilhada onde múltiplos agentes coordenam estados, resultados de ferramentas e decisões sem duplicar histórico conversacional.</p>
+
+    <h2 class="chapter-title">Apêndice B: Especificação RDF Completa do Esquema de Força de Trabalho</h2>
+    <p>O extrato abaixo documenta os axiomas ontológicos centrais persistidos em <code>ontologies/workforce_schema.ttl</code>:</p>
+
+    <pre class="code-block"><code>mesh:belongsToDepartment <span class="code-keyword">a</span> owl:ObjectProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range mesh:Department ;
+    rdfs:label <span class="code-string">"pertence ao departamento"</span>@pt .
+
+mesh:autonomyTier <span class="code-keyword">a</span> owl:DatatypeProperty ;
+    rdfs:domain mesh:TrustPolicy ;
+    rdfs:range xsd:integer ;
+    rdfs:label <span class="code-string">"nível de autonomia (1, 2 ou 3)"</span>@pt .
+
+mesh:blastRadiusScore <span class="code-keyword">a</span> owl:DatatypeProperty ;
+    rdfs:domain mesh:Skill ;
+    rdfs:range xsd:float ;
+    rdfs:label <span class="code-string">"escore de risco de raio de impacto (0.0 a 1.0)"</span>@pt .</code></pre>
+
+    <h2 class="chapter-title">Referências Bibliográficas Canônicas (Normas ABNT)</h2>
+    <div style="font-size:8.5pt; line-height:1.5;">
+      <p class="no-indent" style="margin-bottom:8px;">
+        ANTHROPIC. <strong>Building Effective Agents: Workflows, Orchestration, and Evaluations</strong>. São Francisco: Anthropic Research, 2024. Disponível em: &lt;https://www.anthropic.com/research/building-effective-agents&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        AGENTIC AI FOUNDATION. <strong>Agent Skills Open Specification: Architecture and Progressive Disclosure Standard v1.0</strong>. Linux Foundation, 2026. Disponível em: &lt;https://agentskills.io&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        BERNERS-LEE, T.; HENDLER, J.; LASSILA, O. The Semantic Web: A new form of Web content that is meaningful to computers will unleash a revolution of new abilities. <strong>Scientific American</strong>, v. 284, n. 5, p. 34-43, 2001.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        BROCK, C. <strong>Headcount: An Agent Organization Structured as a Company</strong>. Repositório GitHub, 2026. Disponível em: &lt;https://github.com/cbrock84/headcount&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        BRODA, E.; BRODA, D. <strong>Agentic Mesh: The GenAI-Powered Autonomous Agent Ecosystem</strong>. 1. ed. Boston: O'Reilly Media / Broda Publishing, 2026. 416 p.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        PGR, T. <strong>Skills-IA: Biblioteca Aberta de Prompts e Competências Profissionais Especializadas</strong>. Repositório GitHub, 2026. Disponível em: &lt;https://github.com/tiagopgr/skills-ia&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        ROVAI, F. <strong>Open Ontologies: AI-Native Semantic Engine and Model Context Protocol Server in Rust</strong>. Repositório GitHub, 2026. Disponível em: &lt;https://github.com/fabio-rovai/open-ontologies&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        VASWANI, A.; SHAZEER, N.; PARMAR, N.; USZKOREIT, J.; JONES, L.; GOMEZ, A. N.; KAISER, L.; POLOSUKHIN, I. Attention is All You Need. In: <strong>Advances in Neural Information Processing Systems (NeurIPS 2017)</strong>, Long Beach, CA, v. 30, p. 5998-6008, 2017.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        W3C. <strong>OWL 2 Web Ontology Language Document Overview (Second Edition)</strong>. W3C Recommendation, 2012. Disponível em: &lt;https://www.w3.org/TR/owl2-overview/&gt;. Acesso em: 30 out. 2026.
+      </p>
+      <p class="no-indent" style="margin-bottom:8px;">
+        W3C. <strong>Shapes Constraint Language (SHACL): W3C Recommendation</strong>. World Wide Web Consortium, 2017. Disponível em: &lt;https://www.w3.org/TR/shacl/&gt;. Acesso em: 30 out. 2026.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

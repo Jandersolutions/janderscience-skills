@@ -1,0 +1,85 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix mesh: <https://agentskills.io/mesh#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =================================================================
+# SuperSkills Mesh - SHACL Validation Shapes
+# Enforces enterprise reliability, metadata completeness,
+# and Trust Framework compliance on all 1,300+ skills.
+# =================================================================
+
+mesh:SkillShape a sh:NodeShape ;
+    sh:targetClass mesh:Skill ;
+    
+    # 1. Identifier must exist and be unique
+    sh:property [
+        sh:path mesh:skillIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Every skill must have exactly one unique skillIdentifier." ;
+    ] ;
+    
+    # 2. Must have a human-readable label/name
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Every skill must have an rdfs:label (display name)." ;
+    ] ;
+    
+    # 3. Must belong to an officially registered Department
+    sh:property [
+        sh:path mesh:belongsToDepartment ;
+        sh:class mesh:Department ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Every skill must belong to exactly one registered Department." ;
+    ] ;
+    
+    # 4. Must specify an Autonomy Tier (1, 2, or 3)
+    sh:property [
+        sh:path mesh:autonomyTier ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 3 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Autonomy tier must be an integer between 1 (Read-Only), 2 (Audited Action), and 3 (Human-in-the-Loop)." ;
+    ] ;
+    
+    # 5. Must have an activation description for Discovery
+    sh:property [
+        sh:path mesh:skillDescription ;
+        sh:datatype xsd:string ;
+        sh:minLength 10 ;
+        sh:minCount 1 ;
+        sh:message "Skill description must be at least 10 characters long to allow semantic discovery." ;
+    ] ;
+    
+    # 6. Must reference an existing source path
+    sh:property [
+        sh:path mesh:skillSourcePath ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Skill must reference its SKILL.md file path." ;
+    ] .
+
+mesh:DepartmentShape a sh:NodeShape ;
+    sh:targetClass mesh:Department ;
+    
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Department must have a human-readable name." ;
+    ] ;
+    
+    sh:property [
+        sh:path mesh:charter ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Department must define an operational charter." ;
+    ] .

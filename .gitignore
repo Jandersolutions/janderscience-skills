@@ -1,0 +1,23 @@
+# Rust
+/target
+Cargo.lock
+
+# Heavy external sources not part of skills runtime
+sources/open-ontologies/
+
+# Node / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment & Editor
+.env
+.env.local
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
