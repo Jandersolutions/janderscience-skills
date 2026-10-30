@@ -35,7 +35,7 @@
        \ \   Y    Y   / /      
         \ \          / /       Developed by: Janderson B Abreu
          \ \________/ /        Support: jba1719@gmail.com
-          \__________/         https://github.com/janderscience/janderscience-skills
+          \__________/         https://github.com/Jandersolutions/janderscience-skills
 ```
 
 ---
@@ -299,6 +299,6 @@ All 1,331 skills are verified against the SHACL shapes defined in [`ontologies/s
 
 - **Developer:** Janderson B Abreu
 - **Support Email:** [jba1719@gmail.com](mailto:jba1719@gmail.com)
-- **Repository:** [https://github.com/janderscience/janderscience-skills](https://github.com/janderscience/janderscience-skills)
+- **Repository:** [https://github.com/Jandersolutions/janderscience-skills](https://github.com/Jandersolutions/janderscience-skills)
 - **Standard:** [Agent Skills Foundation (agentskills.io)](https://agentskills.io)
 - **License:** MIT

@@ -35,7 +35,7 @@
        \ \   Y    Y   / /      
         \ \          / /       Desenvolvido por: Janderson B Abreu
          \ \________/ /        Suporte: jba1719@gmail.com
-          \__________/         https://github.com/janderscience/janderscience-skills
+          \__________/         https://github.com/Jandersolutions/janderscience-skills
 ```
 
 ---
@@ -299,6 +299,6 @@ Todas as 1.331 habilidades são formalmente validadas contra as regras do arquiv
 
 - **Desenvolvedor:** Janderson B Abreu
 - **E-mail de Suporte:** [jba1719@gmail.com](mailto:jba1719@gmail.com)
-- **Repositório:** [https://github.com/janderscience/janderscience-skills](https://github.com/janderscience/janderscience-skills)
+- **Repositório:** [https://github.com/Jandersolutions/janderscience-skills](https://github.com/Jandersolutions/janderscience-skills)
 - **Padrão:** [Agent Skills Foundation (agentskills.io)](https://agentskills.io)
 - **Licença:** MIT
