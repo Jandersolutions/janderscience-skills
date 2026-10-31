@@ -1,9 +1,9 @@
 [package]
 name = "janderscience-skills"
-version = "1.1.1"
+version = "1.1.2"
 edition = "2021"
 authors = ["Janderson B Abreu <jba1719@gmail.com>"]
-description = "Enterprise Agentic Mesh workforce with 1,330+ skills across 16 corporate departments"
+description = "Enterprise Agentic Mesh workforce with 1,330+ skills across 16 corporate departments and System 1 Jev/Laya decision engine"
 license = "MIT"
 repository = "https://github.com/Jandersolutions/janderscience-skills"
 readme = "README.md"
@@ -11,6 +11,7 @@ keywords = ["agent-skills", "agentic-mesh", "ai-workforce", "claude-code", "curs
 categories = ["command-line-utilities", "development-tools"]
 include = [
     "src/**/*",
+    "tools/**/*",
     "registry/mesh_registry.json",
     "Cargo.toml",
     "README.md",

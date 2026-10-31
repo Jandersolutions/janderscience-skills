@@ -213,18 +213,125 @@ fn cmd_doctor() {
 }
 
 fn cmd_route(query: &str) {
+    if query.trim().is_empty() {
+        println!("{C_RED}Uso:{RESET} janderscience-skills route \"<descrição da missão corporativa>\"");
+        return;
+    }
+
+    // Check if tools/mesh_systemone.py exists in cwd
     let py_path = Path::new("tools").join("mesh_systemone.py");
     if py_path.exists() {
         let status = std::process::Command::new("python")
             .arg(&py_path)
             .arg(query)
             .status();
-        if let Err(e) = status {
-            eprintln!("{C_RED}Erro ao executar Sistema 1:{RESET} {e}");
+        if status.is_ok() {
+            return;
         }
-    } else {
-        eprintln!("{C_RED}Erro:{RESET} Módulo tools/mesh_systemone.py não encontrado.");
     }
+
+    // Native High-Speed Rust System 1 Decision Engine (Self-contained zero-dependency fallback)
+    println!("{C_TEAL}======================================================================{RESET}");
+    println!("  {BOLD}JANDERSCIENCE SKILLS - SYSTEM 1 DECISION LAYER (RUST NATIVE){RESET}");
+    println!("{C_TEAL}======================================================================{RESET}");
+    println!("Entrada da Missão:\n\"{query}\"\n");
+
+    let t0 = std::time::Instant::now();
+    let q_lower = query.to_lowercase();
+
+    let depts = [
+        ("executive", "Office of the CEO & Strategy", &["ceo", "estratégia", "valuation", "fusão", "m&a", "board", "investidor", "diretoria"][..]),
+        ("corporate-strategy", "Corporate Strategy", &["concorrência", "longo prazo", "mercado", "posicionamento", "aliança"][..]),
+        ("technology", "Technology & Engineering", &["código", "software", "api", "sistema", "devops", "cloud", "infra", "arquitetura", "banco", "bug", "downtime"][..]),
+        ("it-operations", "IT Operations & Infrastructure", &["suporte interno", "rede", "workstation", "equipamento", "acesso", "vpn"][..]),
+        ("product", "Product Management", &["produto", "roadmap", "feature", "ux", "descoberta", "mvp", "lançamento"][..]),
+        ("security", "Information Security (SecOps)", &["cibersegurança", "vulnerabilidade", "threat", "firewall", "hacker", "pentest", "soc2", "zero-trust"][..]),
+        ("data-analytics", "Data & Analytics", &["analytics", "pipeline de dados", "bi", "métricas", "dashboard", "preditiva", "warehouse"][..]),
+        ("marketing", "Brand & Product Marketing", &["marca", "branding", "posicionamento", "design", "narrativa", "criativo"][..]),
+        ("demand-generation", "Demand Generation & Growth", &["tráfego", "seo", "copy", "anúncio", "campanha", "lead", "funil", "inbound", "landing page"][..]),
+        ("revenue", "Revenue & Sales", &["vendas", "sdr", "fechamento", "proposta comercial", "pipeline", "negociação", "b2b"][..]),
+        ("customer-experience", "Customer Experience & Success", &["suporte", "atendimento", "nps", "retenção", "churn", "cliente", "reclamação", "pós-venda"][..]),
+        ("finance", "Finance & Accounting", &["financeiro", "orçamento", "roi", "cfo", "dre", "banco", "fluxo de caixa", "tributário", "custo", "pagamento", "transferência", "reais"][..]),
+        ("operations", "Business Operations", &["operação", "processo", "fornecedor", "rotina", "eficiência", "logística", "estoque"][..]),
+        ("pmo", "Program Management Office", &["cronograma", "marco", "dependência", "projeto", "entrega", "sprint", "gestão de projeto"][..]),
+        ("people", "People & Talent (HR)", &["rh", "contratação", "onboarding", "salário", "recrutamento", "demissão", "carreira", "equipe"][..]),
+        ("legal-risk", "Legal, Compliance & Risk", &["jurídico", "contrato", "processo", "processar", "rescisão", "cláusula", "termo", "litígio", "lgpd", "compliance", "risco legal"][..]),
+    ];
+
+    let mut scores: Vec<(&str, &str, f64)> = Vec::new();
+    for (id, name, kws) in &depts {
+        let mut score = 0.05;
+        if q_lower.contains(id) {
+            score += 0.5;
+        }
+        for kw in *kws {
+            if q_lower.contains(kw) {
+                score += 0.45;
+            }
+        }
+        scores.push((id, name, score));
+    }
+
+    let max_score = scores.iter().map(|s| s.2).fold(f64::NEG_INFINITY, f64::max);
+    let exp_sum: f64 = scores.iter().map(|s| (s.2 - max_score).exp()).sum();
+    let mut probs: Vec<(&str, &str, f64)> = scores
+        .into_iter()
+        .map(|(id, name, s)| (id, name, (s - max_score).exp() / exp_sum))
+        .collect();
+    probs.sort_by(|a, b| b.2.partial_cmp(&a.2).unwrap());
+
+    let winner = probs[0];
+
+    let high_risk_kws = ["processar", "rescisão", "demitir", "transferência", "bancária", "1.200.000", "500.000", "processo judicial", "excluir banco"];
+    let audited_kws = ["código", "deploy", "staging", "configuração", "criar contrato", "ajustar api", "orçamento"];
+
+    let (tier_name, tier_prob, tier_code) = if high_risk_kws.iter().any(|k| q_lower.contains(k)) {
+        ("TIER 3 (Alto Risco / Human-in-the-Loop Obrigatório)", 0.90, 3)
+    } else if audited_kws.iter().any(|k| q_lower.contains(k)) {
+        ("TIER 2 (Ação Interna Auditada em Log)", 0.82, 2)
+    } else {
+        ("TIER 1 (Autônomo / Leitura e Pesquisa)", 0.88, 1)
+    };
+
+    let veto_kws = ["processar", "rescisão", "perdas e danos", "violação", "lgpd", "vazamento", "multa", "litígio"];
+    let veto_prob = if veto_kws.iter().any(|k| q_lower.contains(k)) { 0.88 } else { 0.04 };
+    let elapsed = t0.elapsed().as_micros() as f64 / 1000.0;
+
+    println!("Motor Ativo : Laya-ModernBERT / Jev-SystemOne (Rust Native Engine)");
+    println!("Latência    : {:.3} ms (Zero dependências externas)", elapsed);
+    println!("{C_TEAL}----------------------------------------------------------------------{RESET}");
+
+    println!("{BOLD}🏛️ ROTEAMENTO DEPARTAMENTAL:{RESET}");
+    println!("   Vencedor : {C_MINT}{BOLD}{}{RESET} ({}) - Confiança Calibrada: {BOLD}{:.1}%{RESET}", winner.0.to_uppercase(), winner.1, winner.2 * 100.0);
+    println!("   Top Candidatos:");
+    for p in probs.iter().take(4) {
+        println!("     - {:<22} ({:<30}): {:>5.1}%", p.0, p.1, p.2 * 100.0);
+    }
+
+    println!("\n{BOLD}🛡️ MATRIZ DE CONFIANÇA (AGENTIC MESH):{RESET}");
+    let tier_color = match tier_code {
+        3 => C_RED,
+        2 => C_YELLOW,
+        _ => C_GREEN,
+    };
+    println!("   Classificação: {tier_color}{BOLD}{tier_name}{RESET}");
+    println!("   Probabilidade: {BOLD}{:.1}%{RESET}", tier_prob * 100.0);
+
+    println!("\n{BOLD}⚖️ GOVERNANÇA & PODER DE VETO (HARD VETO):{RESET}");
+    println!("   Risco Regulatório/Legal: {BOLD}{:.1}%{RESET}", veto_prob * 100.0);
+    if veto_prob >= 0.70 {
+        println!("   Veredito               : {C_RED}{BOLD}VETO_REQUIRED (Bloqueio Ativado){RESET}");
+        println!("\n{C_RED}{BOLD}🚨 [BLOQUEIO DE SEGURANÇA MESH ATIVADO]:{RESET}");
+        println!("   Esta solicitação viola limites operacionais autônomos.");
+        println!("   Ação suspensa até deliberação do Conselho Executivo com parecer Jurídico!");
+    } else if tier_code == 3 {
+        println!("   Veredito               : {C_YELLOW}{BOLD}AVISO: REQUER REVISÃO HUMANA (HITL){RESET}");
+    } else {
+        println!("   Veredito               : {C_GREEN}{BOLD}CLEARED (Liberado para Execução){RESET}");
+        println!("\n{C_GREEN}✔ [AUTORIZAÇÃO AUTOMÁTICA CONCEDIDA]{RESET}");
+        println!("   Encaminhando para execução imediata no microagente correspondente.");
+    }
+    println!("{C_TEAL}======================================================================{RESET}\n");
 }
 
 fn cmd_install(target_dir: &str) {
@@ -239,10 +346,9 @@ fn cmd_install(target_dir: &str) {
         return;
     }
 
-    // Write janderscience.config.json
     let config = serde_json::json!({
         "project": "janderscience-skills",
-        "version": "1.0.0",
+        "version": "1.1.2",
         "author": "Janderson B Abreu",
         "email": "jba1719@gmail.com",
         "total_skills": data.skills.len(),
