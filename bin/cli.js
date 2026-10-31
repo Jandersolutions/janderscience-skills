@@ -15,6 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const readline = require('readline');
+const { spawnSync } = require('child_process');
 
 // ANSI Color Helpers
 const RESET = '\x1b[0m';
@@ -322,6 +323,18 @@ function interactiveInstaller() {
   });
 }
 
+function routeMission(query) {
+  const pyScript = path.join(BASE_DIR, 'tools', 'mesh_systemone.py');
+  if (fs.existsSync(pyScript)) {
+    const result = spawnSync('python', [pyScript, query], { stdio: 'inherit' });
+    if (result.error) {
+      console.error(`${C_RED}Erro ao executar motor Sistema 1:${RESET} ${result.error.message}`);
+    }
+  } else {
+    console.error(`${C_RED}Erro:${RESET} Módulo tools/mesh_systemone.py não encontrado.`);
+  }
+}
+
 // ---------------------------------------------------------------------
 // CLI Argument Router
 // ---------------------------------------------------------------------
@@ -341,6 +354,13 @@ function main() {
     showStats();
   } else if (cmd === 'doctor' || cmd === 'check') {
     doctor();
+  } else if (cmd === 'route' || cmd === 'decide') {
+    const query = args.slice(1).join(' ');
+    if (!query) {
+      console.log('Uso: janderscience-skills route "<descrição da missão corporativa>"');
+      return;
+    }
+    routeMission(query);
   } else if (cmd === 'search' || cmd === 'find') {
     const query = args.slice(1).join(' ');
     if (!query) {
@@ -355,6 +375,7 @@ function main() {
   npx janderscience-skills install          Instalador interativo
   npx janderscience-skills install --all    Instala tudo no diretório ./skills
   npx janderscience-skills stats            Exibe as métricas de skills e departamentos
+  npx janderscience-skills route "<missão>" Roteador Sistema 1 com Laya/Jev (Triagem, Tiers e Veto)
   npx janderscience-skills search <termo>   Busca habilidades por palavra-chave
   npx janderscience-skills doctor           Diagnostica ambientes locais instalados
   

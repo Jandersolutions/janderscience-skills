@@ -235,9 +235,12 @@ cargo run -- doctor
 # Ver as métricas completas do ecossistema
 node bin/cli.js stats
 
-# Fazer busca semântica em linguagem natural (PT ou EN)
+# Fazer busca por palavras-chave
 node bin/cli.js search "funil de vendas copy landing page"
 node bin/cli.js search "valuation startup rodada seed"
+
+# Roteador Sistema 1 (Jev & Laya): Triagem Departamental, Nível de Risco (Tier 1/2/3) e Hard Veto
+node bin/cli.js route "Nosso cliente corporativo quer rescindir o contrato antes do prazo por queda na API"
 
 # Diagnóstico de agentes locais instalados
 node bin/cli.js doctor
@@ -274,6 +277,7 @@ janderscience-skills/
 ├── mesh_workforce/
 │   └── orchestrator.py             # Orquestrador de frotas e governança Agentic Mesh
 ├── tools/
+│   ├── mesh_systemone.py           # Motor de Decisão Sistema 1 (Jev & Laya: Triagem, Tiers e Hard Veto)
 │   ├── mesh_builder.py             # Pipeline de ingestão, normalização e emissão RDF
 │   └── query_mesh.py               # CLI Python de busca e inspeção
 └── sources/                        # Repositórios upstream integrados

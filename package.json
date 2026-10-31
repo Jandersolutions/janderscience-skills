@@ -1,7 +1,7 @@
 {
   "name": "janderscience-skills",
-  "version": "1.0.0",
-  "description": "Enterprise-grade Agentic Mesh workforce with 1,330+ skills across 16 corporate departments, validated by Open Ontologies and agentskills.io",
+  "version": "1.1.0",
+  "description": "Enterprise-grade Agentic Mesh workforce with 1,330+ skills across 16 corporate departments, System 1 decision engine (Jev/Laya), validated by Open Ontologies and agentskills.io",
   "main": "bin/cli.js",
   "bin": {
     "janderscience-skills": "bin/cli.js",
@@ -10,6 +10,8 @@
   },
   "files": [
     "bin/",
+    "tools/",
+    "mesh_workforce/",
     "registry/",
     "sources/headcount/",
     "sources/skills-ia/",
@@ -19,6 +21,7 @@
   ],
   "scripts": {
     "start": "node bin/cli.js",
+    "route": "node bin/cli.js route",
     "install-skills": "node bin/cli.js install",
     "test": "node bin/cli.js stats"
   },

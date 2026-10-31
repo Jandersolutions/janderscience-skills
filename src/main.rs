@@ -212,6 +212,21 @@ fn cmd_doctor() {
     println!("{C_TEAL}======================================================================{RESET}\n");
 }
 
+fn cmd_route(query: &str) {
+    let py_path = Path::new("tools").join("mesh_systemone.py");
+    if py_path.exists() {
+        let status = std::process::Command::new("python")
+            .arg(&py_path)
+            .arg(query)
+            .status();
+        if let Err(e) = status {
+            eprintln!("{C_RED}Erro ao executar Sistema 1:{RESET} {e}");
+        }
+    } else {
+        eprintln!("{C_RED}Erro:{RESET} Módulo tools/mesh_systemone.py não encontrado.");
+    }
+}
+
 fn cmd_install(target_dir: &str) {
     print_banner();
     let data = load_data();
@@ -249,6 +264,7 @@ fn main() {
         print_banner();
         println!("Uso do CLI JanderScience Skills (Rust):");
         println!("  janderscience-skills stats             Exibe estatísticas de skills");
+        println!("  janderscience-skills route \"<missão>\"  Roteador Sistema 1 com Laya/Jev");
         println!("  janderscience-skills search <termo>    Busca habilidades por palavra-chave");
         println!("  janderscience-skills doctor            Diagnostica ambientes locais");
         println!("  janderscience-skills install [path]    Instala skills em um diretório");
@@ -259,6 +275,10 @@ fn main() {
     match args[1].as_str() {
         "stats" | "info" => cmd_stats(),
         "doctor" | "check" => cmd_doctor(),
+        "route" | "decide" => {
+            let q = args[2..].join(" ");
+            cmd_route(&q);
+        }
         "search" | "find" => {
             let q = args[2..].join(" ");
             cmd_search(&q, 10);

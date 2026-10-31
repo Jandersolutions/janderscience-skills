@@ -235,9 +235,12 @@ cargo run -- doctor
 # View complete ecosystem metrics
 node bin/cli.js stats
 
-# Perform natural language semantic searches (EN or PT)
+# Perform keyword searches
 node bin/cli.js search "sales funnel copy landing page"
 node bin/cli.js search "valuation startup rodada seed"
+
+# System 1 Decision Router (Jev & Laya): Departmental Triage, Risk Tiers, and Hard Veto
+node bin/cli.js route "Corporate client threatening breach of contract due to repeated API outage"
 
 # Environmental diagnostic check
 node bin/cli.js doctor
@@ -274,6 +277,7 @@ janderscience-skills/
 ├── mesh_workforce/
 │   └── orchestrator.py             # Agentic Mesh Multi-Agent Fleet Orchestrator
 ├── tools/
+│   ├── mesh_systemone.py           # System 1 Decision Engine (Jev & Laya: Triage, Tiers & Hard Veto)
 │   ├── mesh_builder.py             # Ingestion, normalization & RDF generator
 │   └── query_mesh.py               # Python discovery CLI
 └── sources/                        # Integrated upstream repositories

@@ -31,8 +31,25 @@ class MeshOrchestrator:
         """Decomposes a corporate mission into departmental microagent tasks."""
         goal_lower = mission_goal.lower()
         
+        # 0. System 1 Decision Layer (Jev & Laya Triage, Calibrated Tiers & Hard Veto)
+        s1_data = None
+        try:
+            sys.path.insert(0, str(BASE_DIR))
+            from tools.mesh_systemone import dispatch_decision
+            s1_eval = dispatch_decision(mission_goal)
+            s1_data = s1_eval.get("results", {})
+        except Exception:
+            s1_data = None
+
         # 1. Department matching
         selected_depts = []
+        if s1_data and "department" in s1_data:
+            primary_dept = s1_data["department"]["winner"]
+            selected_depts.append(primary_dept)
+            for cand_dept, prob in s1_data["department"].get("probabilities", {}).items():
+                if cand_dept != primary_dept and prob >= 0.08 and cand_dept not in selected_depts:
+                    selected_depts.append(cand_dept)
+
         dept_keywords = {
             "executive": ["estratégia", "investidor", "valuation", "ceo", "decisão", "fundraising", "board", "empresa"],
             "corporate-strategy": ["m&a", "fusão", "aquisição", "mercado", "concorrência", "longo prazo"],
@@ -49,7 +66,7 @@ class MeshOrchestrator:
         }
         
         for dept_id, kws in dept_keywords.items():
-            if any(k in goal_lower for k in kws):
+            if any(k in goal_lower for k in kws) and dept_id not in selected_depts:
                 selected_depts.append(dept_id)
                 
         if not selected_depts:
@@ -88,11 +105,20 @@ class MeshOrchestrator:
                     "skill_path": cs["path"]
                 })
                 
+        veto_flag = False
+        veto_prob = 0.0
+        if s1_data and "compliance_veto" in s1_data:
+            veto_prob = s1_data["compliance_veto"].get("probability", 0.0)
+            veto_flag = s1_data["compliance_veto"].get("verdict") == "VETO_REQUIRED"
+
         return {
             "mission": mission_goal,
             "governance": {
                 "max_autonomy_tier": overall_max_tier,
                 "requires_human_approval": overall_max_tier >= 3,
+                "hard_veto_triggered": veto_flag,
+                "hard_veto_risk": f"{veto_prob*100:.1f}%",
+                "system_one_active": s1_data is not None,
                 "compliance_framework": "Agentic Mesh 7-Layer Trust Matrix"
             },
             "departments_involved": [self.departments[d]["name"] for d in selected_depts],
@@ -115,6 +141,9 @@ def main():
     print(f"Departments  : {', '.join(plan['departments_involved'])}")
     print(f"Max Tier     : Tier {plan['governance']['max_autonomy_tier']}")
     print(f"Approval Req : {'SIM (Human-in-the-Loop Triggered)' if plan['governance']['requires_human_approval'] else 'NAO (Autonomia Concedida)'}")
+    if plan['governance']['hard_veto_triggered']:
+        print(f"🚨 HARD VETO : ATIVADO (Risco Regulatório/Legal: {plan['governance']['hard_veto_risk']})")
+        print("              Ação suspensa preventivamente pelo Conselho Executivo.")
     print("-"*70)
     print("Decomposed Agent Execution Pipeline:")
     
